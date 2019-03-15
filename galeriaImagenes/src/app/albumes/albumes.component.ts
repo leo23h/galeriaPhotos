@@ -29,7 +29,6 @@ export class AlbumesComponent implements OnInit {
 
   /*function for create albumes*/
   saveAlbum() {
-    console.log("inspeccionar el envio del nombre del album", this.album);
     this._albumesService.postAlbum(this.album)
       .subscribe(success => {
         /*clean input*/
