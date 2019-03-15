@@ -1,0 +1,14 @@
+.dec-text {
+    text-decoration: none;
+}
+
+a {
+    color: #01004e;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.toolbar {
+    height: 40px;
+    background-color: #f4f4f4
+}
