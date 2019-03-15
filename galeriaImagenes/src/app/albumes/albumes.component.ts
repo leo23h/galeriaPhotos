@@ -9,17 +9,37 @@ import { map } from 'rxjs/operators';
 })
 export class AlbumesComponent implements OnInit {
 
-  public albums: any[];
+  public albumes: any[];
   public errorMsg;
+  public success;
   public stateCreate = false;
+  album: any = {};
 
   constructor(private _albumesService: AlbumesService) { };
 
-
   ngOnInit() {
+    this.getAlbumes();
+  }
+
+  getAlbumes() {
     this._albumesService.getAlbum()
-      .subscribe(success => { this.albums = success.data; },
+      .subscribe(success => { this.albumes = success.data; },
         error => { this.errorMsg = error; });
+  }
+
+  /*function for create albumes*/
+  saveAlbum() {
+    console.log("inspeccionar el envio del nombre del album", this.album);
+    this._albumesService.postAlbum(this.album)
+      .subscribe(success => {
+        /*clean input*/
+        this.album = {};
+        /*call all the albums*/
+        this.getAlbumes();
+      },
+        error => {
+          this.errorMsg = error;
+        });
   }
 
   changeStateCreate() {

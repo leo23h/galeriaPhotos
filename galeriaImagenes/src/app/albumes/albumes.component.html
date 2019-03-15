@@ -14,26 +14,36 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <h3>Create Album</h3>
         <hr>
-        <form class="form-inline">
-            <div class="form-group mx-sm-3 mb-2">
-                <label class="sr-only">Album Name</label>
-                <input type="text" class="form-control" id="albumName" placeholder="Album name">
+        <form name="form" class="form-inline" (ngSubmit)="f.form.valid && saveAlbum()" #f="ngForm">
+            <div class="form-group col-md-2 mb-2">
+                <label class="lab-tit">Album Name</label><span class="red">*</span>
+                <input type="text" class="form-control in-alb" [(ngModel)]="album.name" #name="ngModel" name="name" placeholder="Album name" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required>
+
             </div>
-            <button class="btn btn-primary mb-2"><i class="far fa-save" ></i> Save</button>
-            <button class="btn btn-danger mb-2" style="margin-left:15px" (click)="cancelStateCreate()"><i class="far fa-times-circle"></i> Cancel</button>
+
+            <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                <div *ngIf="name.errors.required" style="padding:auto"> *Album Name Required</div>
+            </div>
+
+            <div class="col-md-6 col-sm-6 col-xs-6 button-group">
+                <button type="submit" class="btn btn-primary mb-2"><i class="far fa-save"></i> Save</button>
+                <button class="btn btn-danger mb-2" style="margin-left:15px" (click)="cancelStateCreate()"><i
+                        class="far fa-times-circle"></i> Cancel</button>
+            </div>
+
         </form>
     </div>
 </div>
-<div class="row" style="padding: 20px;">
-    <div class="col-md-12 col-sm-12 col-xs-12">
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 padd-tit-main">
         <h3>Albums</h3>
         <hr>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-2 col-sm-2 col-xs-1" style="padding-left: 30px;" *ngFor="let alb of albums">
-        <a class="dec-text" href="#">
-            <i class="fas fa-folder fa-7x"></i><br>
+    <div class="col-md-2 col-sm-2 col-xs-1 list-alb" *ngFor="let alb of albumes">
+        <a class="dec-text " href="#">
+            <i class="fas fa-folder fa-7x "></i><br>
             <span>{{alb.name}}</span>
         </a>
     </div>

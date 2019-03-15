@@ -20,9 +20,11 @@ export class AlbumesService {
       );
   }
 
-  postAlbum(name: string): Observable<any> {
-
-    return this.http.get<any>(this._urlBase + '/album')
+  postAlbum(data: any): Observable<any> {
+    const header = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8'
+    });
+    return this.http.post<any>(this._urlBase + '/album', data, { headers: header })
       .pipe(
         retry(0),
         catchError(this.errorHandler)
