@@ -1,3 +1,71 @@
-<p>
-  album-detail works!
-</p>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 toolbar">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-plus"></i> New
+      </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button" (click)="changeStateCreate()">Picture</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="padding: 20px;">
+    <div class="col-md-12 col-sm-12 col-xs-12 mb-10">
+        <h3>Album Information</h3>
+        <hr>
+        <div class="row">
+            <div class="col-md-2 col-sm-2 col-xs-2 ico-col" style="color: #01004e;">
+                <i class="fas fa-folder fa-8x"></i><br>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 mb-10">
+                <div class="col-md-6 col-sm-6 col-xs-12 " style="margin-bottom: 20px;">
+                    <h5>Album name:</h5>
+                    {{album.name}}
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <h5>Creation Date:</h5>
+                    {{album.creationDate | date: 'dd/MM/yyy'}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="padding: 20px;">
+    <div class="col-md-12 col-sm-12 col-xs-12 padd-tit-main">
+        <h3>Pictures</h3>
+        <hr>
+        <form name="form" class="form-inline" (ngSubmit)="fm.form.valid && uploadImage(album)" #fm="ngForm" *ngIf="stateSaveImage" style="margin-top: 30px;">
+            <div class="form-group col-md-3 col-sm-3 col-xs-12">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <label class="input-group-prepend">
+                            <span class="btn btn-primary-success">
+                                <i class="fas fa-upload"></i>
+                                Upload&hellip; <input type="file" (change)="onFileChanged($event)" style="display: none;"
+                                    #fileInput>
+                            </span>
+                        </label>
+                        <input type="text" [(ngModel)]="fileName" class="form-control form-control-sm" #filenm="ngModel" name="filenm" style="height:38px" [ngClass]="{ 'is-invalid': fm.submitted && filenm.invalid }" required>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="fm.submitted && filenm.invalid" class="invalid-feedback">
+                <div *ngIf="filenm.errors.required" style="padding:auto"> *Image Required</div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 button-group">
+                <button type="submit" class="btn btn-primary mb-2"><i class="far fa-save"></i> Save</button>
+                <button class="btn btn-danger mb-2" style="margin-left:15px" (click)="cancelStateCreate()"><i
+                        class="far fa-times-circle"></i> Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 col-sm-2 col-xs-1 list-alb" *ngFor="let img of album.images">
+        <a href="#">
+            <img [src]="img.image" class="alb-siz">
+        </a><br>
+        <span>{{img.name}}</span>
+    </div>
+</div>

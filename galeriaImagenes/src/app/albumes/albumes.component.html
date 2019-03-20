@@ -18,19 +18,15 @@
             <div class="form-group col-md-2 mb-2">
                 <label class="lab-tit">Album Name</label><span class="red">*</span>
                 <input type="text" class="form-control in-alb" [(ngModel)]="album.name" #name="ngModel" name="name" placeholder="Album name" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required>
-
             </div>
-
             <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
                 <div *ngIf="name.errors.required" style="padding:auto"> *Album Name Required</div>
             </div>
-
             <div class="col-md-6 col-sm-6 col-xs-6 button-group">
                 <button type="submit" class="btn btn-primary mb-2"><i class="far fa-save"></i> Save</button>
                 <button class="btn btn-danger mb-2" style="margin-left:15px" (click)="cancelStateCreate()"><i
                         class="far fa-times-circle"></i> Cancel</button>
             </div>
-
         </form>
     </div>
 </div>
@@ -41,10 +37,10 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-2 col-sm-2 col-xs-1 list-alb" *ngFor="let alb of albumes">
-        <a class="dec-text " href="#">
+    <div class="col-md-2 col-sm-2 col-xs-1 list-alb" *ngFor="let album of albumes">
+        <a class="" [routerLink]="['/albums-detail/',album.id]" (click)="selectAlbum(album)">
             <i class="fas fa-folder fa-7x "></i><br>
-            <span>{{alb.name}}</span>
+            <span>{{album.name}}</span>
         </a>
     </div>
 </div>

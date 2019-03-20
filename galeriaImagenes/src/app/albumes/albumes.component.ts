@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlbumesService } from './albumes.service';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-albumes',
@@ -15,7 +16,7 @@ export class AlbumesComponent implements OnInit {
   public stateCreate = false;
   album: any = {};
 
-  constructor(private _albumesService: AlbumesService) { };
+  constructor(private _albumesService: AlbumesService, private router: Router) { };
 
   ngOnInit() {
     this.getAlbumes();
@@ -39,6 +40,10 @@ export class AlbumesComponent implements OnInit {
         error => {
           this.errorMsg = error;
         });
+  }
+
+  selectAlbum(album) {
+    this.router.navigate(['/albums-detail', album._id]);
   }
 
   changeStateCreate() {

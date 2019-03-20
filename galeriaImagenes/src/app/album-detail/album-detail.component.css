@@ -1,0 +1,24 @@
+/* a {
+    color: #01004e;
+    text-decoration: none;
+    background-color: transparent;
+} */
+
+.ico-col {
+    color: #01004e !important;
+}
+
+.btn-primary-success {
+    background-color: #01004e;
+    color: white;
+}
+
+.alb-siz {
+    height: 200px;
+    width: 200px;
+}
+
+.list-alb {
+    padding-top: 20px;
+    padding-left: 30px;
+}
