@@ -99,6 +99,10 @@ export class AlbumDetailComponent implements OnInit {
     return false;
   }
 
+  selectImage(image) {
+    this.router.navigate(['/image-detail', image._id]);
+  }
+
 }
 
 

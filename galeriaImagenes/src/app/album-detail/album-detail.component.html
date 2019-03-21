@@ -62,10 +62,12 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-2 col-sm-2 col-xs-1 list-alb" *ngFor="let img of album.images">
-        <a href="#">
+    <div class="col-md-2 col-sm-2 col-xs-1 list-alb" *ngFor="let img of album.images; let i = index">
+        <a [routerLink]="['/image-detail/',img._id]" (click)="selectImage(img)">
             <img [src]="img.image" class="alb-siz">
         </a><br>
-        <span>{{img.name}}</span>
+        <div class="form-check">
+            <label class="form-check-label" for="defaultCheck1">{{img.name}}</label>
+        </div>
     </div>
 </div>

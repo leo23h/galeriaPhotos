@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 toolbar">
+    </div>
+</div>
+<div class="row" style="padding: 20px;">
+    <div class="col-md-12 col-sm-12 col-xs-12 mb-10">
+        <h3>Picture Information</h3>
+        <hr>
+        <div class="row">
+            <div class="col-md-2 col-sm-2 col-xs-2 ico-col">
+                <img class="alb-siz" [src]="imageInfo.image"><br>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 mb-10">
+                <div class="col-md-12 col-sm-12 col-xs-12 " style="margin-bottom: 20px;">
+                    <h5>Picture name:</h5>
+                    {{imageInfo.name}}
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h5>Creation Date:</h5>
+                    {{imageInfo.creationDate | date: 'dd/MM/yyy'}}
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 mb-10">
+                <div class="col-md-12 col-sm-12 col-xs-12 " style="margin-bottom: 20px;">
+                    <h5>Album name:</h5>
+                    {{albumInfo.name}}
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h5>Creation Date:</h5>
+                    {{albumInfo.creationDate | date: 'dd/MM/yyy'}}
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-top:20px">
+            <div class="col-md-12">
+                <a class="btn btn-primary" [routerLink]="['/album-detail/',albumInfo._id]" (click)="back(albumInfo)" style="margin-right: 10px"><i class="fas fa-arrow-left"></i> Back</a>
+                <a class="btn btn-danger" (click)="deleteImage(albumInfo._id, imageInfo._id)" style="color:white"><i class="fas fa-trash-alt"></i> Delete</a>
+            </div>
+        </div>
+    </div>
+</div>

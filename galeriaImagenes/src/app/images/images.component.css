@@ -1,0 +1,27 @@
+.padd-tit-main {
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+}
+
+.toolbar {
+    height: 40px;
+    background-color: #f4f4f4
+}
+
+a {
+    color: #01004e;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.alb-siz {
+    height: 200px;
+    width: 200px;
+}
+
+.list-alb {
+    padding-top: 20px;
+    padding-left: 30px;
+}
