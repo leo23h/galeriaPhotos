@@ -14,7 +14,7 @@ export class ImageDetailService {
 
   /*function for get album by id*/
   getImageById(id) {
-    return this.http.get<any>(this._urlBase + '/album/image/' + id)
+    return this.http.get<any>(this._urlBase + '/albums/images/' + id)
       .pipe(
         retry(0),
         catchError(this.errorHandler)
