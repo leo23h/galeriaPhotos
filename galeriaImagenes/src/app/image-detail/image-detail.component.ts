@@ -48,17 +48,17 @@ export class ImageDetailComponent implements OnInit {
   }
 
   back(album) {
-     this.router.navigate(['/albums-detail', album._id]);
+    this.router.navigate(['/images']);
   }
 
-  deleteImage(idAlbum, idImage){
-     this.imageDetailService.deleteImage(idAlbum, idImage)
-     .subscribe(
-       success => {
+  deleteImage(idAlbum, idImage) {
+    this.imageDetailService.deleteImage(idAlbum, idImage)
+      .subscribe(
+        success => {
           this.back(idAlbum);
-       }, 
-        error => { 
-          this.errorMsg = error; 
+        },
+        error => {
+          this.errorMsg = error;
         })
   }
 
